@@ -48,4 +48,19 @@ print("The rough molecular weight of insulin: " +
 str(molecularWeightInsulin))
 molecularWeightInsulinActual = 5807.63   #To calculate the error percentage:error percentage = (| measured – accepted | / accepted)*100%
 print("Error percentage: " + str(((molecularWeightInsulin - molecularWeightInsulinActual)/molecularWeightInsulinActual)*100))
+
 #Calculating the Net Charge of Insulin by Using Python Lists and Loops
+pKR = {'y': 10.07, 'c': 8.18, 'k': 10.53, 'h': 6.00, 'r': 12.48, 'd': 3.65, 'e': 4.25}
+#use the count() method and list comprehension to count the number of Y, C, K, H, R, D, and E amino acids.
+insulin.count("Y")
+float(insulin.count("Y"))
+seqCount = ({x: float(insulin.count(x)) for x in ['y','c','k','h','r','d','e']})
+pH = 0
+while (pH <= 14):
+    netCharge = (
+    +(sum({x: ((seqCount[x]*(10**pKR[x]))/((10**pH)+(10**pKR[x]))) \
+    for x in ['k','h','r']}.values()))
+    -(sum({x: ((seqCount[x]*(10**pH))/((10**pH)+(10**pKR[x]))) \
+    for x in ['y','c','d','e']}.values())))
+    print('{0:.2f}'.format(pH), netCharge)
+    pH +=1
