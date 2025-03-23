@@ -55,6 +55,7 @@ pKR = {'y': 10.07, 'c': 8.18, 'k': 10.53, 'h': 6.00, 'r': 12.48, 'd': 3.65, 'e':
 insulin.count("Y")
 float(insulin.count("Y"))
 seqCount = ({x: float(insulin.count(x)) for x in ['y','c','k','h','r','d','e']})
+#The function for the formula includes a while loop that will print the net charge while the pH variable is equal to or below 14.
 pH = 0
 while (pH <= 14):
     netCharge = (
